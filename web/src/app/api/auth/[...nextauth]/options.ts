@@ -33,16 +33,23 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials) return null;
+        try {
+          const user = await prisma.users.findFirst({
+            where: { email: credentials.email },
+          });
 
-        const user = await prisma.users.findFirst({
-          where: { email: credentials.email },
-        });
+          if (!user) {
+            return null;
+          }
 
-        if (!user) {
-          return null;
-        }
+          const accessToken = await prisma.accessTokens.findFirst({
+            where: { userId: user.id, token: credentials.accessKey },
+          });
 
-        if (credentials.accessKey === "SWAGGER") {
+          if (!accessToken) {
+            return null;
+          }
+
           return {
             id: user.id,
             role: "ADMIN",
@@ -50,7 +57,8 @@ export const authOptions: NextAuthOptions = {
             image: user.avatarUrl,
             name: user.name,
           };
-        } else {
+        } catch (e) {
+          console.log(e);
           return null;
         }
       },

@@ -49,6 +49,14 @@ model Summary {
   room      Rooms    @relation(fields: [roomId], references: [id])
 }
 
+model AccessTokens {
+  id        String   @id
+  userId    String   @unique
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
 enum Role {
   ADMIN
   USER
