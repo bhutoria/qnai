@@ -14,6 +14,11 @@ Apart from relying on a Postgres DB and Redis (for rate limiting), the project c
 
 ## Local Set Up
 
+Prerequisites:
+
+1. Docker (not necessary but required if using the below local set up)
+2. GitHub Auth Secret
+
 ```
 docker-compose up
 

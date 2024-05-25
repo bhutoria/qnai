@@ -23,7 +23,7 @@ export async function GET(
     const data = await prisma.chat.findMany({
       select: { message: true, user: { select: { name: true, role: true } } },
       where: { roomId: id },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: "asc" },
       take: 100,
     });
     if (!data) {
