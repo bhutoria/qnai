@@ -1,4 +1,4 @@
-# QnAI - Smart Chat for Classes
+# Q&ai - Smart Chat for Classes
 
 QnAI aims to be an alternative for Zoom Chat with the following added features:
 
