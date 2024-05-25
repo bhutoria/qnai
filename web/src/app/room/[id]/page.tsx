@@ -37,6 +37,9 @@ export default function RoomAdminPerspective() {
       }
     };
     getRoom();
+    return () => {
+      setActiveRoom(null);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

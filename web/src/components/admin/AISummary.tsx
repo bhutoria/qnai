@@ -16,6 +16,7 @@ const AISummary = ({ id }: { id: string }) => {
       const response = await fetch(`/api/admin/rooms/summary`, {
         method: "POST",
         body: JSON.stringify({ id }),
+        cache: "no-cache",
       });
       if (!response.ok) {
         return;
