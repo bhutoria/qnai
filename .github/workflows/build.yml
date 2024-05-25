@@ -22,7 +22,7 @@ jobs:
         run: npx prisma generate
 
       - name: Build socket server
-        run: npm run build
+        run: cd socket-server && npm run build
 
       - name: Install web dependencies and generate prisma client
         run: cd ../web && npm install && npx prisma generate
