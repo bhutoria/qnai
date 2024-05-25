@@ -18,7 +18,7 @@ class SocketServer {
   private static instance: SocketServer;
   private io: Server | null;
   private rooms: { [id: string]: Room } = {};
-  private redisClient = createClient();
+  private redisClient = createClient({ url: "redis://redis:6379" });
 
   private chat: { [key: string]: { message: string; id: string }[] } = {};
 
