@@ -10,11 +10,11 @@ datasource db {
 model Users {
   id        String   @id @default(cuid())
   email     String   @unique
+  role      Role     @default(USER)
   name      String?
   avatarUrl String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  role      Role     @default(USER)
   chats     Chat[]
   rooms     Rooms[]
 }
@@ -25,6 +25,7 @@ model Rooms {
   userId    String
   accessKey String?   @unique
   createdAt DateTime  @default(now())
+  info      String?
   chat      Chat[]
   user      Users     @relation(fields: [userId], references: [id])
   summary   Summary[]

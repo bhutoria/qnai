@@ -35,6 +35,7 @@ model Rooms{
   createdAt DateTime @default(now())
   chat Chat[]
   summary Summary[]
+  info String?
 }
 
 model Chat{

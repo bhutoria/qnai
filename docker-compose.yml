@@ -7,7 +7,7 @@ services:
       - PORT=3002
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
       - REDIS_URL=redis://redis:6379
-      - GEMINI_API_KEY=AIzaSyAEgPva6QCPSvixpcJ1-JCymwOs5e2yCSU
+      - GEMINI_API_KEY=
     ports:
       - "3002:3002"
     volumes:
