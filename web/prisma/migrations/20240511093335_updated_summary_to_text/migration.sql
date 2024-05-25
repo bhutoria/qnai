@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Summary" ALTER COLUMN "summary" SET NOT NULL,
-ALTER COLUMN "summary" SET DATA TYPE TEXT;

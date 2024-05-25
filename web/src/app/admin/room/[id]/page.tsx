@@ -32,7 +32,9 @@ export default function RoomAdminPerspective() {
   useEffect(() => {
     const getRoom = async () => {
       try {
-        const response = await fetch(`/api/admin/rooms/${id}`);
+        const response = await fetch(`/api/admin/rooms/${id}`, {
+          cache: "no-cache",
+        });
         if (!response.ok) {
           router.push("/dashboard");
           return;
@@ -51,7 +53,7 @@ export default function RoomAdminPerspective() {
       resetChat();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (activeRoom && session?.user?.id) {

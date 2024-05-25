@@ -13,7 +13,9 @@ const MessagesArea = () => {
 
   useEffect(() => {
     const getMessages = async () => {
-      const response = await fetch(`/api/messages/${id}`);
+      const response = await fetch(`/api/messages/${id}`, {
+        cache: "no-cache",
+      });
       if (!response.ok) {
         return;
       }
@@ -33,6 +35,9 @@ const MessagesArea = () => {
       }
     };
     getMessages();
+    return () => {
+      setMessages([]);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

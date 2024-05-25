@@ -9,10 +9,11 @@ setInterval(() => {
   CACHE_MESSAGES.clear();
 }, CACHE_TIMEOUT);
 
-export async function GET(req: NextRequest) {
-  const id = req.url?.split("/").pop();
-
-  if (!id) return NextResponse.json({}, { status: 401 });
+export async function GET(
+  req: NextRequest,
+  { params: { id } }: { params: { id: string } }
+) {
+  if (!id) return NextResponse.json({}, { status: 400 });
 
   if (CACHE_MESSAGES.has(id)) {
     return NextResponse.json({ messages: CACHE_MESSAGES.get(id) });
