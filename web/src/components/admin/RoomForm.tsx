@@ -28,6 +28,7 @@ export default function RoomForm() {
             id: data.roomId,
             name: roomName,
             userId: "",
+            info: "",
           },
         ]);
       } catch (e) {
