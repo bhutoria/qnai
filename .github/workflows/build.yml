@@ -1,0 +1,31 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node jobs
+        uses: actions/setup-node@v3
+
+      - name: Install socket server dependencies and generate prisma client
+        run: cd socket-server && npm install
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Build socket server
+        run: npm run build
+
+      - name: Install web dependencies and generate prisma client
+        run: cd ../web && npm install && npx prisma generate
+
+      - name: Build web
+        run: npm run build
