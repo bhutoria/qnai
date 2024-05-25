@@ -28,4 +28,4 @@ jobs:
         run: cd web && npm install && npx prisma generate
 
       - name: Build web
-        run: npm run build
+        run: cd web && npm run build
